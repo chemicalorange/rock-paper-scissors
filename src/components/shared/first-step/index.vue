@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import IconTriangle from "@/components/icons/IconTriangle.vue";
 import ButtonEl from "@/components/ui/button/index.vue";
 import {useGameStore} from "@/stores/game";

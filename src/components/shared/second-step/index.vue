@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import ButtonEl from "@/components/ui/button/index.vue"
 import { onMounted } from "vue"
 import { useGameStore } from "@/stores/game"
