@@ -1,0 +1,23 @@
+:root {
+    --desktop-width: 1366px;
+    --mobile-width: 375px;
+
+    --color-cyan: linear-gradient(hsl(189, 59%, 53%), hsl(189, 58%, 57%));
+    --color-dark-text: hsl(229, 25%, 31%);
+    --color-score-text: hsl(229, 64%, 46%);
+    --color-btn-inner-shadow: #cccccc;
+    --color-text: #f3f3f3;
+    --color-header-outline: hsl(217, 16%, 45%);
+    --color-background: radial-gradient( hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+    --color-dark-blue: hsl(237, 49%, 15%);
+
+    --paper-gradient: linear-gradient(hsl(227, 89%, 62%), hsl(230, 89%, 65%));
+    --paper-shadow: hsl(229, 70%, 37%);
+    --paper-active: hsl(229, 83%, 28%);
+    --rock-gradient: linear-gradient(hsl(349, 71%, 52%), hsl(349, 70%, 56%));
+    --rock-shadow: hsl(349, 85%, 31%);
+    --rock-active: hsl(349, 91%, 26%);
+    --scissors-gradient: linear-gradient(hsl(39, 89%, 49%), hsl(40, 84%, 53%));
+    --scissors-shadow: hsl(39, 96%, 38%);
+    --scissors-active: hsl(40, 99%, 29%);
+}
