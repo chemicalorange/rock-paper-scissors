@@ -1,12 +1,12 @@
 import { defineStore } from "pinia"
-
+import type { Variant } from "@/stores/types"
 interface State {
   score: number,
   step: number,
   win: boolean | null,
   count: number,
-  activeTool: string,
-  houseActiveTool: string | null
+  activeTool: Variant,
+  houseActiveTool: Variant | null
 }
 export const useGameStore = defineStore('game', {
   state: (): State => ({
@@ -18,14 +18,15 @@ export const useGameStore = defineStore('game', {
     houseActiveTool: null,
   }),
   actions: {
-    setActiveTool(value: string) {
+    setActiveTool(value: Variant) {
       this.activeTool = value
       this.step = 2
     },
     setHouseActiveTool() {
-        const getRandom = ():string => {
+        const getRandom = ():Variant => {
           const randomNumber = Math.floor(Math.random() * 3)
-          const value = ['rock', 'paper', 'scissors'][randomNumber]
+          const variants: Variant[] = ['rock', 'paper', 'scissors']
+          const value = variants[randomNumber]
           if( value !== this.activeTool ) {
             return value
           }

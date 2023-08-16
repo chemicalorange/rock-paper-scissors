@@ -2,8 +2,8 @@
 import IconRock from "@/components/icons/IconRock.vue";
 import IconPaper from "@/components/icons/IconPaper.vue";
 import IconScissors from "@/components/icons/IconScissors.vue";
+import type { Variant } from "@/stores/types";
 
-type Variant = 'rock' | 'paper' | 'scissors'
 
 defineProps<{
   variant: Variant
