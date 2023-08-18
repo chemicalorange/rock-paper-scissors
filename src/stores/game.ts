@@ -1,12 +1,28 @@
-import { defineStore } from "pinia"
-import type { Variant } from "@/stores/types"
+import { defineStore } from 'pinia'
+import { Variant } from '@/stores/types'
+
 interface State {
-  score: number,
-  step: number,
-  win: boolean | null,
-  count: number,
-  activeTool: Variant,
+  score: number
+  step: number
+  win: boolean | null
+  count: number
+  activeTool: Variant
   houseActiveTool: Variant | null
+}
+
+const isWin = {
+  paper: {
+    rock: true,
+    scissors: false
+  },
+  rock: {
+    paper: false,
+    scissors: true
+  },
+  scissors: {
+    paper: true,
+    rock: false
+  }
 }
 export const useGameStore = defineStore('game', {
   state: (): State => ({
@@ -14,8 +30,8 @@ export const useGameStore = defineStore('game', {
     step: 1,
     win: null,
     count: 0,
-    activeTool: 'paper',
-    houseActiveTool: null,
+    activeTool: Variant.Paper,
+    houseActiveTool: null
   }),
   actions: {
     setActiveTool(value: Variant) {
@@ -23,55 +39,25 @@ export const useGameStore = defineStore('game', {
       this.step = 2
     },
     setHouseActiveTool() {
-        const getRandom = ():Variant => {
-          const randomNumber = Math.floor(Math.random() * 3)
-          const variants: Variant[] = ['rock', 'paper', 'scissors']
-          const value = variants[randomNumber]
-          if( value !== this.activeTool ) {
-            return value
-          }
-          return getRandom()
-        }
-        this.houseActiveTool = getRandom()
+      if (this.activeTool) {
+        const allValues = Object.values(Variant)
+        allValues.splice(allValues.indexOf(this.activeTool), 1)
+        const value = allValues[Math.floor(Math.random() * 2)]
+        const indexOfValue = Object.values(Variant).indexOf(value as unknown as Variant)
+        const key: keyof Variant = Object.keys(Variant)[indexOfValue]
+        this.houseActiveTool = Variant[key]
+      }
     },
     playAgain() {
       this.step = 1
       this.houseActiveTool = null
     },
     compare() {
-      if(this.activeTool === 'rock') {
-          if(this.houseActiveTool === 'paper') {
-            this.win = false
-          }
-
-          if(this.houseActiveTool === 'scissors') {
-            this.win = true
-          }
-      }
-
-      if(this.activeTool === 'paper') {
-        if(this.houseActiveTool === 'scissors') {
-          this.win = false
-        }
-
-        if(this.houseActiveTool === 'rock') {
-          this.win = true
-        }
-      }
-
-      if(this.activeTool === 'scissors') {
-        if(this.houseActiveTool === 'rock') {
-          this.win = false
-        }
-
-        if(this.houseActiveTool === 'paper') {
-          this.win = true
-        }
-      }
-      if(this.win) {
+      this.win = isWin[this.activeTool][this.houseActiveTool]
+      if (this.win) {
         this.score = this.score + 1
       }
       this.step = 3
     }
-  },
+  }
 })

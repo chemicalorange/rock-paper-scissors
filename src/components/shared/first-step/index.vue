@@ -1,51 +1,59 @@
 <script setup lang="ts">
-import IconTriangle from "@/components/icons/IconTriangle.vue";
-import ButtonEl from "@/components/ui/button/index.vue";
-import {useGameStore} from "@/stores/game";
+import IconTriangle from '@/components/icons/IconTriangle.vue'
+import ButtonEl from '@/components/ui/button/index.vue'
+import { useGameStore } from '@/stores/game'
+import { Variant } from '@/stores/types'
 
 const store = useGameStore()
 
+const props = defineProps({
+  getResult: Function
+})
+const handleClick = (variant: Variant) => {
+  store.setActiveTool(variant)
+  props.getResult()
+}
 </script>
 <template>
   <div :class="$style.wrapper">
     <IconTriangle :class="$style.triangle" />
-    <ButtonEl variant="paper" @click="store.setActiveTool('paper')" />
-    <ButtonEl variant="scissors" @click="store.setActiveTool('scissors')" />
-    <ButtonEl variant="rock" @click="store.setActiveTool('rock')" />
+    <ButtonEl :variant="Variant.Paper" @click="handleClick(Variant.Paper)" />
+    <ButtonEl :variant="Variant.Scissors" @click="handleClick(Variant.Scissors)" />
+    <ButtonEl :variant="Variant.Rock" @click="handleClick(Variant.Rock)" />
   </div>
 </template>
 <style module>
+.wrapper {
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  align-content: center;
+  gap: 50px;
+}
+
+@media screen and (max-width: 600px) {
   .wrapper {
-    display: grid;
-    position: relative;
-    grid-template-columns: repeat(2, 1fr);
-    justify-content: center;
-    align-content: center;
-    gap: 50px;
+    gap: 30px;
   }
+}
 
-  @media screen and (max-width: 600px) {
-    .wrapper {
-      gap: 30px;
-    }
-  }
+.wrapper > div:last-child {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  margin: auto;
+}
 
-  .wrapper > div:last-child {
-    grid-column-start: 1;
-    grid-column-end: 3;
-    margin: auto;
-  }
+.triangle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
+@media screen and (max-width: 600px) {
   .triangle {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    margin-top: 20px;
   }
-
-  @media screen and (max-width: 600px) {
-    .triangle {
-      margin-top: 20px;
-    }
-  }
+}
 </style>

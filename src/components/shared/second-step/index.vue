@@ -1,15 +1,7 @@
 <script setup lang="ts">
-import ButtonEl from "@/components/ui/button/index.vue"
-import { onMounted } from "vue"
-import { useGameStore } from "@/stores/game"
+import ButtonEl from '@/components/ui/button/index.vue'
+import { useGameStore } from '@/stores/game'
 const store = useGameStore()
-
-onMounted(() => {
-  setTimeout(() => {
-    store.setHouseActiveTool()
-    store.compare()
-  }, 1000)
-})
 </script>
 <template>
   <div :class="$style.wrapper">
@@ -25,43 +17,43 @@ onMounted(() => {
   </div>
 </template>
 <style module>
+.wrapper {
+  display: flex;
+  gap: 60px;
+}
+
+@media screen and (max-width: 600px) {
   .wrapper {
-    display: flex;
-    gap: 60px;
-  }
-
-  @media screen and (max-width: 600px) {
-    .wrapper {
-      gap: 40px;
-    }
-  }
-
-  .column {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     gap: 40px;
-    flex-shrink: 0;
   }
+}
 
-  .column h3 {
-    color: var(--color-text);
-    text-transform: uppercase;
-    text-align: center;
-  }
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  flex-shrink: 0;
+}
 
+.column h3 {
+  color: var(--color-text);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.house {
+  width: 120px;
+  height: 120px;
+  background: var(--color-dark-blue);
+  border-radius: 120px;
+  margin-top: 15px;
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 600px) {
   .house {
-    width: 120px;
-    height: 120px;
-    background: var(--color-dark-blue);
-    border-radius: 120px;
-    margin-top: 15px;
-    opacity: 0.6;
+    margin-top: 5px;
   }
-
-  @media screen and (max-width: 600px) {
-    .house {
-      margin-top: 5px;
-    }
-  }
+}
 </style>

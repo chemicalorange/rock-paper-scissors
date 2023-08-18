@@ -1,1 +1,5 @@
-export type Variant = 'rock' | 'paper' | 'scissors'
+export enum Variant {
+  Rock = 'rock',
+  Paper = 'paper',
+  Scissors = 'scissors'
+}
