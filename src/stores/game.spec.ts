@@ -1,8 +1,9 @@
 // stores/counter.spec.ts
-import { describe, it, expect, beforeEach } from 'vitest'
-import { setActivePinia, createPinia } from 'pinia'
+import { beforeEach, describe, expect, it } from 'vitest'
+import { createPinia, setActivePinia } from 'pinia'
 
 import { useGameStore } from '@/stores/game'
+import { Variant } from '@/stores/types'
 
 describe('Game Store', () => {
   beforeEach(() => {
@@ -15,26 +16,26 @@ describe('Game Store', () => {
   it('compare tools', () => {
     const game = useGameStore()
 
-    game.setActiveTool('scissors')
-    game.houseActiveTool = 'rock'
+    game.setActiveTool(Variant.Scissors)
+    game.houseActiveTool = Variant.Rock
     game.compare()
 
     expect(game.win).toBe(false)
 
-    game.setActiveTool('scissors')
-    game.houseActiveTool = 'paper'
+    game.setActiveTool(Variant.Scissors)
+    game.houseActiveTool = Variant.Paper
     game.compare()
 
     expect(game.win).toBe(true)
 
-    game.setActiveTool('rock')
-    game.houseActiveTool = 'paper'
+    game.setActiveTool(Variant.Rock)
+    game.houseActiveTool = Variant.Paper
     game.compare()
 
     expect(game.win).toBe(false)
 
-    game.setActiveTool('rock')
-    game.houseActiveTool = 'scissors'
+    game.setActiveTool(Variant.Rock)
+    game.houseActiveTool = Variant.Scissors
     game.compare()
 
     expect(game.win).toBe(true)

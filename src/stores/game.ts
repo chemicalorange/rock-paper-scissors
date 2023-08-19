@@ -11,35 +11,35 @@ interface State {
 }
 
 const isWin = {
-  paper: {
-    rock: true,
-    scissors: false,
-    spock: true,
-    lizard: false
+  [Variant.Paper]: {
+    [Variant.Rock]: true,
+    [Variant.Scissors]: false,
+    [Variant.Spock]: true,
+    [Variant.Lizard]: false
   },
-  rock: {
-    paper: false,
-    scissors: true,
-    spock: false,
-    lizard: true
+  [Variant.Rock]: {
+    [Variant.Paper]: false,
+    [Variant.Scissors]: true,
+    [Variant.Spock]: false,
+    [Variant.Lizard]: true
   },
-  scissors: {
-    paper: true,
-    rock: false,
-    spock: false,
-    lizard: true
+  [Variant.Scissors]: {
+    [Variant.Paper]: true,
+    [Variant.Rock]: false,
+    [Variant.Spock]: false,
+    [Variant.Lizard]: true
   },
-  spock: {
-    paper: false,
-    rock: true,
-    scissors: true,
-    lizard: false
+  [Variant.Spock]: {
+    [Variant.Paper]: false,
+    [Variant.Rock]: true,
+    [Variant.Scissors]: true,
+    [Variant.Lizard]: false
   },
-  lizard: {
-    paper: true,
-    rock: false,
-    scissors: false,
-    spock: true
+  [Variant.Lizard]: {
+    [Variant.Paper]: true,
+    [Variant.Rock]: false,
+    [Variant.Scissors]: false,
+    [Variant.Spock]: true
   }
 }
 export const useGameStore = defineStore('game', {
@@ -62,8 +62,9 @@ export const useGameStore = defineStore('game', {
         allValues.splice(allValues.indexOf(this.activeTool), 1)
         const value = allValues[Math.floor(Math.random() * allValues.length)]
         const indexOfValue = Object.values(Variant).indexOf(value as unknown as Variant)
+        // @ts-ignore
         const key: keyof Variant = Object.keys(Variant)[indexOfValue]
-        this.houseActiveTool = Variant[key]
+        this.houseActiveTool = Variant[key as keyof typeof Variant]
       }
     },
     playAgain() {
@@ -71,11 +72,14 @@ export const useGameStore = defineStore('game', {
       this.houseActiveTool = null
     },
     compare() {
-      this.win = isWin[this.activeTool][this.houseActiveTool]
-      if (this.win) {
-        this.score = this.score + 1
+      if (this.houseActiveTool) {
+        // @ts-ignore
+        this.win = isWin[this.activeTool][this.houseActiveTool]
+        if (this.win) {
+          this.score = this.score + 1
+        }
+        this.step = 3
       }
-      this.step = 3
     }
   }
 })

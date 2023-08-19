@@ -11,7 +11,7 @@ const props = defineProps({
 })
 const handleClick = (variant: Variant) => {
   store.setActiveTool(variant)
-  props.getResult()
+  props.getResult && props.getResult()
 }
 </script>
 <template>
