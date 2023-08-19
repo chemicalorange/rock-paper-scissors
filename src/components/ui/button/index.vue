@@ -37,8 +37,8 @@ defineProps<{
 
 @media screen and (max-width: 600px) {
   .button {
-    width: 140px;
-    height: 130px;
+    width: 127px;
+    height: 115px;
   }
 }
 

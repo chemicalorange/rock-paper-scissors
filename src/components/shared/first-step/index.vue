@@ -47,6 +47,12 @@ const handleClick = (variant: Variant) => {
   transform: translateY(20px);
 }
 
+@media screen and (min-width: 800px) {
+  .wrapper > div:first-of-type {
+    transform: translateY(40px);
+  }
+}
+
 .wrapper > div:nth-of-type(2) {
   transform: translateX(-44px);
 }

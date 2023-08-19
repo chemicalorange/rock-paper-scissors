@@ -75,9 +75,7 @@ export const useGameStore = defineStore('game', {
       if (this.houseActiveTool) {
         // @ts-ignore
         this.win = isWin[this.activeTool][this.houseActiveTool]
-        if (this.win) {
-          this.score = this.score + 1
-        }
+        this.win ? this.score++ : this.score--
         this.step = 3
       }
     }
