@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import IconTriangle from '@/components/icons/IconTriangle.vue'
+import IconTriangle from '@/components/icons/IconPentagon.vue'
 import ButtonEl from '@/components/ui/button/index.vue'
 import { useGameStore } from '@/stores/game'
 import { Variant } from '@/stores/types'
@@ -17,8 +17,10 @@ const handleClick = (variant: Variant) => {
 <template>
   <div :class="$style.wrapper">
     <IconTriangle :class="$style.triangle" />
-    <ButtonEl :variant="Variant.Paper" @click="handleClick(Variant.Paper)" />
     <ButtonEl :variant="Variant.Scissors" @click="handleClick(Variant.Scissors)" />
+    <ButtonEl :variant="Variant.Spock" @click="handleClick(Variant.Spock)" />
+    <ButtonEl :variant="Variant.Paper" @click="handleClick(Variant.Paper)" />
+    <ButtonEl :variant="Variant.Lizard" @click="handleClick(Variant.Lizard)" />
     <ButtonEl :variant="Variant.Rock" @click="handleClick(Variant.Rock)" />
   </div>
 </template>
@@ -38,10 +40,19 @@ const handleClick = (variant: Variant) => {
   }
 }
 
-.wrapper > div:last-child {
+.wrapper > div:first-of-type {
   grid-column-start: 1;
   grid-column-end: 3;
   margin: auto;
+  transform: translateY(20px);
+}
+
+.wrapper > div:nth-of-type(2) {
+  transform: translateX(-44px);
+}
+
+.wrapper > div:nth-of-type(3) {
+  transform: translateX(44px);
 }
 
 .triangle {

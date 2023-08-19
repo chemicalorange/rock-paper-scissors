@@ -13,15 +13,33 @@ interface State {
 const isWin = {
   paper: {
     rock: true,
-    scissors: false
+    scissors: false,
+    spock: true,
+    lizard: false
   },
   rock: {
     paper: false,
-    scissors: true
+    scissors: true,
+    spock: false,
+    lizard: true
   },
   scissors: {
     paper: true,
-    rock: false
+    rock: false,
+    spock: false,
+    lizard: true
+  },
+  spock: {
+    paper: false,
+    rock: true,
+    scissors: true,
+    lizard: false
+  },
+  lizard: {
+    paper: true,
+    rock: false,
+    scissors: false,
+    spock: true
   }
 }
 export const useGameStore = defineStore('game', {
@@ -42,7 +60,7 @@ export const useGameStore = defineStore('game', {
       if (this.activeTool) {
         const allValues = Object.values(Variant)
         allValues.splice(allValues.indexOf(this.activeTool), 1)
-        const value = allValues[Math.floor(Math.random() * 2)]
+        const value = allValues[Math.floor(Math.random() * allValues.length)]
         const indexOfValue = Object.values(Variant).indexOf(value as unknown as Variant)
         const key: keyof Variant = Object.keys(Variant)[indexOfValue]
         this.houseActiveTool = Variant[key]

@@ -3,6 +3,8 @@ import IconRock from '@/components/icons/IconRock.vue'
 import IconPaper from '@/components/icons/IconPaper.vue'
 import IconScissors from '@/components/icons/IconScissors.vue'
 import { Variant } from '@/stores/types'
+import IconLizard from '@/components/icons/IconLizard.vue'
+import IconSpock from '@/components/icons/IconSpock.vue'
 
 defineProps<{
   variant: Variant
@@ -14,6 +16,8 @@ defineProps<{
       <IconRock v-if="variant === Variant.Rock" :class="$style.icon" />
       <IconPaper v-if="variant === Variant.Paper" :class="$style.icon" />
       <IconScissors v-if="variant === Variant.Scissors" :class="$style.icon" />
+      <IconSpock v-if="variant === Variant.Spock" :class="$style.icon" />
+      <IconLizard v-if="variant === Variant.Lizard" :class="$style.icon" />
     </div>
   </div>
 </template>
@@ -95,6 +99,30 @@ defineProps<{
 
 .scissors.button:active::after {
   background: var(--scissors-active);
+}
+
+.lizard.button::before {
+  background: var(--lizard-gradient);
+}
+
+.lizard.button::after {
+  background: var(--lizard-shadow);
+}
+
+.lizard.button:active::after {
+  background: var(--lizard-active);
+}
+
+.spock.button::before {
+  background: var(--spock-gradient);
+}
+
+.spock.button::after {
+  background: var(--spock-shadow);
+}
+
+.spock.button:active::after {
+  background: var(--spock-active);
 }
 
 .button:active::after {

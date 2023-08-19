@@ -2,7 +2,6 @@
     --desktop-width: 1366px;
     --mobile-width: 375px;
 
-    --color-cyan: linear-gradient(hsl(189, 59%, 53%), hsl(189, 58%, 57%));
     --color-dark-text: hsl(229, 25%, 31%);
     --color-score-text: hsl(229, 64%, 46%);
     --color-btn-inner-shadow: #cccccc;
@@ -20,4 +19,10 @@
     --scissors-gradient: linear-gradient(hsl(39, 89%, 49%), hsl(40, 84%, 53%));
     --scissors-shadow: hsl(39, 96%, 38%);
     --scissors-active: hsl(40, 99%, 29%);
+    --lizard-gradient: linear-gradient(hsl(261, 73%, 60%), hsl(261, 72%, 63%));
+    --lizard-shadow: hsl(261, 53%, 49%);
+    --lizard-active: hsl(259, 72%, 35%);
+    --spock-gradient: linear-gradient(hsl(189, 59%, 53%), hsl(189, 58%, 57%));
+    --spock-shadow: hsl(189, 71%, 38%);
+    --spock-active: hsl(190, 80%, 27%);
 }

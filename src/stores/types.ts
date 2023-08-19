@@ -1,5 +1,7 @@
 export enum Variant {
   Rock = 'rock',
   Paper = 'paper',
-  Scissors = 'scissors'
+  Scissors = 'scissors',
+  Spock = 'spock',
+  Lizard = 'lizard'
 }
