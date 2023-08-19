@@ -66,11 +66,6 @@ const handleClick = (variant: Variant) => {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-@media screen and (max-width: 600px) {
-  .triangle {
-    margin-top: 20px;
-  }
+  margin-top: 20px;
 }
 </style>
