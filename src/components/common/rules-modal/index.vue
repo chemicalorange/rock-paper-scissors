@@ -1,16 +1,20 @@
-<script setup>
+<script setup lang="ts">
 import IconClose from '@/components/icons/IconClose.vue'
 import IconRules from '@/components/icons/IconRules.vue'
 
-defineProps({
-  isOpen: Boolean,
-  close: Function
-})
+defineProps<{
+  isOpen: Boolean
+  close?: Function
+}>()
+
+const handleClose = () => {
+  close && close()
+}
 </script>
 <template>
-  <div v-if="isOpen" :class="$style.backdrop" @click="close">
+  <div v-if="isOpen" :class="$style.backdrop" @click="handleClose">
     <div :class="$style.popup" @click.stop>
-      <IconClose :class="$style.close" @click="close" />
+      <IconClose :class="$style.close" @click="handleClose" />
       <h2 :class="$style.title">Rules</h2>
       <IconRules :class="$style.rules" />
     </div>
