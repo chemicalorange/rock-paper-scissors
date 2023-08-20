@@ -23,7 +23,7 @@ const store = useGameStore()
   border: 3px solid var(--color-header-outline);
   border-radius: 12px;
   padding: 10px 20px;
-  margin-top: 20px;
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 

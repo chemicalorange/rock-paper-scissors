@@ -68,4 +68,11 @@ const handleClick = (variant: Variant) => {
   transform: translate(-50%, -50%);
   margin-top: 20px;
 }
+
+@media screen and (min-width: 900px) {
+  .triangle {
+    transform: translate(-50%, -50%) scale(1.2);
+    margin-top: 24px;
+  }
+}
 </style>
