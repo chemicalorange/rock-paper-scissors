@@ -2,17 +2,17 @@
 import IconClose from '@/components/icons/IconClose.vue'
 import IconRules from '@/components/icons/IconRules.vue'
 
-defineProps<{
+const props = defineProps<{
   isOpen: Boolean
-  close?: Function
+  closeModal?: Function
 }>()
 
 const handleClose = () => {
-  close && close()
+  props.closeModal && props.closeModal()
 }
 </script>
 <template>
-  <div v-if="isOpen" :class="$style.backdrop" @click="handleClose">
+  <div v-if="props.isOpen" :class="$style.backdrop" @click="handleClose">
     <div :class="$style.popup" @click.stop>
       <IconClose :class="$style.close" @click="handleClose" />
       <h2 :class="$style.title">Rules</h2>

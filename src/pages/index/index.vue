@@ -18,11 +18,11 @@ const getResult = () => {
 
 const isOpen = ref(false)
 
-const close = () => {
+const closeModal = () => {
   isOpen.value = false
 }
 
-const open = () => {
+const openModal = () => {
   isOpen.value = true
 }
 </script>
@@ -32,8 +32,8 @@ const open = () => {
     <FirstStep v-if="store.step === 1" :get-result="getResult" />
     <SecondStep v-if="store.step === 2" />
     <ThirdStep v-if="store.step === 3" />
-    <button :class="$style.button" @click="open">Rules</button>
-    <RulesModal :is-open="isOpen" :close="close" />
+    <button :class="$style.button" @click="openModal">Rules</button>
+    <RulesModal :is-open="isOpen" :closeModal="closeModal" />
   </div>
 </template>
 <style module>
